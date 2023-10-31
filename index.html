@@ -3,12 +3,18 @@
         <title>ThaanAquatics | Home</title>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Baloo Tammudu" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <meta charset="utf-8">
     </head>
     <body>
         <div class="nav">
             <div id="left">
-                <a href="shop.html">Shop</a>
+                <div class="search-container">
+                    <form action="/search" method="get">
+                      <input class="search" id="searchleft" type="search" name="q" placeholder="Search">
+                      <label class="button searchbutton" for="searchleft"><span class="mglass">&#9906;</span></label>
+                    </form>
+                </div>
             </div>
             <a href="index.html">
                 <img src="assets/img/logo.png" alt="TA" id="logo">
@@ -19,10 +25,7 @@
                 </a>
             </div>
         </div>
-        <!-- <div class="intro">
-            <h2>Welcome to ThaanAquatics</h2>
-            <p>Your one-stop shop for high quality freshwater fish. Explore our vast selection and find the perfect inhabitants for your aquarium.</p>
-        </div> -->
+
         <div class="gallery">
             <h2>Explore Our Shop</h2>
             <div class="section">
