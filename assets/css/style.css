@@ -1,0 +1,80 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #333;
+}
+
+.nav {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #272623;
+}
+
+#logo {
+    width: 160px;
+}
+
+.nav img {
+    width: 25px;
+}
+
+#left a, #right a {
+    padding: 10px;
+    color: #CCCCCC;
+    text-decoration: none;
+    font-family: 'Baloo Tammudu', sans-serif;
+}
+
+.intro {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.intro h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1em;
+}
+
+.gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.gallery h2 {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.section {
+    width: 30%;
+    margin-bottom: 60px;
+}
+
+.section img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.section p {
+    text-align: center;
+    color: #CCCCCC;
+    margin-top: 5px;
+}
