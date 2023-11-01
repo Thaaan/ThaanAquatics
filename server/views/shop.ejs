@@ -1,26 +1,28 @@
 <html>
     <head>
-        <title>ThaanAquatics | Shop</title>
+        <title>ThaanAquatics | Home</title>
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Baloo Tammudu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patrick Hand" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <link rel="icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
+        <script src="/assets/js/script.js" defer></script>
         <meta charset="utf-8">
     </head>
     <body>
         <div class="nav">
             <div id="left">
+                <a href="/">
+                    <img src="/assets/img/logo.png" alt="TA" id="logo">
+                </a>
+            </div>
+            <div id="center"></div>
+            <div id="right">
                 <div class="search-container">
                     <form action="/search" method="get">
-                      <input class="search" id="searchleft" type="search" name="q" placeholder="Search">
-                      <label class="button searchbutton" for="searchleft"><span class="mglass">&#9906;</span></label>
+                      <input class="search expandright" id="searchright" type="search" name="q" placeholder="Search">
+                      <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
                     </form>
                 </div>
-            </div>
-            <a href="/">
-                <img src="/assets/img/logo.png" alt="TA" id="logo">
-            </a>
-            <div id="right">
                 <a href="/account">
                     <img src="/assets/img/account-img.png" alt="Account">
                 </a>
@@ -29,11 +31,30 @@
                 </a>
             </div>
         </div>
-        <h1>Items</h1>
-        <ul>
-            <% items.forEach(item => { %>
-                <li><strong>Name:</strong> <%= item.Name %> | <strong>Category:</strong> <%= item.Category %></li>
-            <% }); %>
-        </ul>
+
+        <div class="container">
+            <div class="sidebar">
+                    <div class="dropdown">
+                        <a>Catfish</a>
+                        <div class="dropdown-content">
+                            <a href="/products/corydoras">Corydoras</a>
+                            <a href="/products/plecostomus">Plecostomus</a>
+                        </div>
+                    </div>
+                    <a href="/products/livebearers">Guppies</a>
+                    <a href="/products/livebearers">Mollies</a>
+                    <a href="/products/bettas">Bettas</a>
+                    <a href="/products/feeders and inverts">Feeders</a>
+                    <a href="/products/plants">Plants</a>
+            </div>
+
+            <div class="gallery">
+                <ul>
+                    <% items.forEach(item => { %>
+                        <li><strong>Name:</strong> <%= item.Name %> | <strong>Category:</strong> <%= item.Category %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
