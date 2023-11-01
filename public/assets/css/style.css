@@ -217,6 +217,7 @@ body{
 
 .shopall .description {
     background-color: transparent;
+    color: #CCCCCC;
     width: 50vw;
     height: 20vh;
     position: absolute;
@@ -291,6 +292,7 @@ body{
 
 ul {
     margin-left: calc(10px + 2vw);
+    color: #CCCCCC;
 }
 
 @media (max-width: 768px) {
