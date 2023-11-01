@@ -25,7 +25,7 @@ body {
 }
 
 #left a, #right a {
-    padding: 10px;
+    padding: 35px;
     color: #CCCCCC;
     text-decoration: none;
     font-family: 'Baloo Tammudu', sans-serif;
@@ -53,11 +53,18 @@ body {
 .searchbutton {
 	position: absolute;
     text-align: center;
-    font-size: 43px;
-	height: 100%;
-	width: 100%;
+    font-size: 38px;
+	height: 80%;
+	width: 80%;
 	margin: 0;
 	padding: 0;
+    border-radius: 12px 0px 0px 12px;
+    transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+    transition-delay: .23s;
+    cursor: pointer;
 }
 
 .search:focus + .searchbutton {
@@ -65,13 +72,13 @@ body {
 	-moz-transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
+    transition-delay: -1s;
 	background-color: #333333;
-	/* color: #CCCCCC; */
 }
 
 .search {
 	position: absolute;
-	left: 75px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+	left: 65px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
 	background-color: #333333;
     caret-color: #CCCCCC;
     color: #CCCCCC;
@@ -79,16 +86,17 @@ body {
 	border: none;
 	padding: 0;
 	width: 0;
-	height: 100%;
+	height: 80%;
 	z-index: 10;
 	transition-duration: 0.4s;
 	-moz-transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
+    border-radius: 0px 12px 12px 0px;
 }
 
 .search:focus {
-	width: 363px; /* Bar width+1px */
+	width: 250px; /* Bar width+1px */
 	padding: 0 16px 0 0;
 }
 
@@ -103,11 +111,13 @@ body {
     width: 100%;
     text-align: center;
     color: #fff;
-    font-size: 2em;
+    font-size: 2.2em;
+    font-family: 'Baloo Tammudu', sans-serif;
     margin-bottom: 20px;
 }
 
 .section {
+    cursor: pointer;
     width: 30%;
     margin-bottom: 60px;
 }
