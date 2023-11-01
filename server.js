@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const itemRoutes = require('./server/db/item.routes.js');
 
 app.use(express.json());  // To parse JSON bodies
-app.use('/products', itemRoutes);
+app.use('/', itemRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/server/views'));

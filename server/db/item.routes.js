@@ -11,7 +11,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
-router.get('/category/:category', async (req, res) => {
+router.get('/products/:category', async (req, res) => {
     try {
         const itemCategory = req.params.category;
         const items = await itemModel.getItemByCategory(itemCategory);
@@ -20,6 +20,16 @@ router.get('/category/:category', async (req, res) => {
         res.status(500).send('Error retrieving items.');
     }
 });
+
+router.get('/search', async (req, res) => {
+    try {
+        const query = req.query.q;
+        const items = await itemModel.containsQuery(query);
+        res.render('shop', { items: items} )
+    } catch (error) {
+        res.status(500).send('Error retrieving items.')
+    }
+})
 
 router.get('/api/name/:name', async (req, res) => {
     try {

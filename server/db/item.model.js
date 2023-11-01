@@ -24,6 +24,18 @@ function getItemByName(itemName) {
   });
 }
 
+function containsQuery(query) {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM Products WHERE Name LIKE ? OR Category LIKE ?', ['%' + query + '%', '%' + query + '%'], function(err, results) {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
 function getItemByCategory(itemCategory) {
   return new Promise((resolve, reject) => {
       pool.query('SELECT * FROM Products WHERE Category = ?', [itemCategory], function(err, results) {
@@ -38,6 +50,7 @@ function getItemByCategory(itemCategory) {
 
 module.exports = {
   getAllItems,
+  containsQuery,
   getItemByName,
   getItemByCategory
 };
