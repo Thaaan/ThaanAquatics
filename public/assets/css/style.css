@@ -122,6 +122,10 @@ body {
     margin-bottom: 60px;
 }
 
+.section a {
+    text-decoration: none;
+}
+
 .section img {
     object-fit: cover;
     height: 100%;
@@ -130,6 +134,7 @@ body {
 }
 
 .section p {
+    text-decoration: none;
     text-align: center;
     color: #CCCCCC;
     margin-top: 5px;

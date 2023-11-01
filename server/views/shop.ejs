@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>ThaanAquatics | Shop</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Baloo Tammudu" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="nav">
+            <div id="left">
+                <div class="search-container">
+                    <form action="/search" method="get">
+                      <input class="search" id="searchleft" type="search" name="q" placeholder="Search">
+                      <label class="button searchbutton" for="searchleft"><span class="mglass">&#9906;</span></label>
+                    </form>
+                </div>
+            </div>
+            <a href="/">
+                <img src="/assets/img/logo.png" alt="TA" id="logo">
+            </a>
+            <div id="right">
+                <a href="cart.html">
+                    <img src="/assets/img/cart-img.png" alt="Cart">
+                </a>
+            </div>
+        </div>
+        <h1>Items</h1>
+        <ul>
+            <% items.forEach(item => { %>
+                <li><strong>Name:</strong> <%= item.Name %> | <strong>Category:</strong> <%= item.Category %></li>
+            <% }); %>
+        </ul>
+    </body>
+</html>
