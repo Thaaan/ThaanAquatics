@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const itemModel = require('./item.model');
 
-router.get('/all', async (req, res) => {
+router.get('/products/all', async (req, res) => {
     try {
         const items = await itemModel.getAllItems();
         res.render('shop', { items: items });
