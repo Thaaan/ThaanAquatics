@@ -4,10 +4,10 @@
     "description": "Basic webstore",
     "main": "index.js",
     "scripts": {
-      "start": "node server.js"
+        "start": "node server.js"
     },
     "dependencies": {
-      "express": "^4.17.1"
+        "express": "^4.17.1",
+        "open": "^9.1.0"
     }
-  }
-  
+}
