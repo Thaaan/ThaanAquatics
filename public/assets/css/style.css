@@ -240,7 +240,10 @@ body{
     font-size: calc(12px + 0.4vw);
 }
 
-.shopall div {
+.shopall a {
+    color: #CCCCCC;
+    text-decoration: none;
+    font-size: calc(10px + 1.5vw);
     background-color: #272623;
     width: calc(8% + 3vw);
     height: calc(3% + 2vw);
@@ -250,12 +253,6 @@ body{
     justify-content: center;
     align-items: center;
     margin: 0px calc(5% + 5vw) calc(1% + 5vh) 0px;
-}
-
-.shopall div a {
-    color: #CCCCCC;
-    text-decoration: none;
-    font-size: calc(10px + 1.5vw);
 }
 
 
