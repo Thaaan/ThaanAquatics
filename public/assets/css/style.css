@@ -89,6 +89,7 @@ body{
 }
 
 .search {
+    transform: translate3d(0,0,0);  /* force hardware acceleration to remove artifacts */
 	position: absolute;
     left: 68px;
 	background-color: #333333;
@@ -97,7 +98,7 @@ body{
 	outline: none;
 	border: none;
 	padding: 0;
-	width: 0;
+	width: 0px;
 	height: 85%;
 	z-index: 10;
 	transition-duration: 0.4s;
