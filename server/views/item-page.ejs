@@ -53,17 +53,21 @@
                     <a href="/">Home</a> > <a href="/products/<%= item.Category %>"><%= item.Category %></a> > <a id="no-underline"><%= item.Name %></a>
                 </div>
 
-                <!-- Item image -->
-                <div class="item-image">
-                    <img src="<%= item.photoPath %>" alt="<%= item.Name %>">
-                </div>
+                <div class="item-content">
+                    <!-- Item image -->
+                    <div class="images">
+                        <% photos.forEach(function(photoPath) { %>
+                            <img src="<%= photoPath %>" alt="<%= item.Name %>">
+                        <% }); %>
+                    </div>
 
-                <!-- Item details -->
-                <div class="item-details">
-                    <h1><%= item.Name %></h1>
-                    <p><%= item.Description %></p>
-                    <h2>Price: $<%= item.Price %></h2>
-                    <button>Add to Cart</button>
+                    <!-- Item details -->
+                    <div class="item-details">
+                        <h1><%= item.Name %></h1>
+                        <p><%= item.Description %></p>
+                        <h2>Price: $<%= item.Price %></h2>
+                        <button>Add to Cart</button>
+                    </div>
                 </div>
             </div>
         </div>

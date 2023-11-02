@@ -1,14 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const itemModel = require('./item.model');
+const fs = require('fs');
+const path = require('path');
 
 router.get('/products/:category/:name', async (req, res) => {
     try {
         const itemName = req.params.name;
         const item = await itemModel.getItemByName(itemName);
         if (item && item.length > 0) {
-            res.render('item-page', {
-                item: item[0]
+            const dirPath = path.join(__dirname, '..', '..', 'public', item[0].photoPath, '..');
+
+            fs.readdir(dirPath, (err, files) => {
+                if (err) {
+                    console.error(err);
+                    res.status(500).send('Error reading directory');
+                    return;
+                }
+        
+                const photoPaths = files.map(file => path.join('/assets/img/products', file));
+        
+                res.render('item-page', {
+                    item: item[0],
+                    photos: photoPaths
+                });
             });
         } else {
             res.status(404).json({ message: "Item not found" });
