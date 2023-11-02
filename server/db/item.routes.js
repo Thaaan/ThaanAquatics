@@ -15,7 +15,11 @@ router.get('/products/:category', async (req, res) => {
     try {
         const itemCategory = req.params.category;
         const items = await itemModel.getItemByCategory(itemCategory);
-        res.render('shop', { items: items });
+        
+        res.render('shop', {
+            items: items,
+            currentCategory: itemCategory
+        });
     } catch (error) {
         res.status(500).send('Error retrieving items.');
     }

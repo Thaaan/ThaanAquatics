@@ -37,23 +37,33 @@
                     <div class="dropdown">
                         <a>Catfish</a>
                         <div class="dropdown-content">
-                            <a href="/products/corydoras">Corydoras</a>
-                            <a href="/products/plecostomus">Plecostomus</a>
+                            <a href="/products/Corydoras">Corydoras</a>
+                            <a href="/products/Plecostomus">Plecostomus</a>
                         </div>
                     </div>
-                    <a href="/products/livebearers">Guppies</a>
-                    <a href="/products/livebearers">Mollies</a>
-                    <a href="/products/bettas">Bettas</a>
-                    <a href="/products/feeders and inverts">Feeders</a>
-                    <a href="/products/plants">Plants</a>
+                    <a href="/products/Livebearers">Guppies</a>
+                    <a href="/products/Livebearers">Mollies</a>
+                    <a href="/products/Bettas">Bettas</a>
+                    <a href="/products/Feeders and Inverts">Feeders</a>
+                    <a href="/products/Plants">Plants</a>
             </div>
-
+            
             <div class="gallery">
-                <ul>
+                <div class="breadcrumbs">
+                    <a href="/">Home</a> > <a href="/products/<%= currentCategory %>"><%= currentCategory %></a>
+                    <p><%= currentCategory %></p>
+                </div>
+                <div class="items-grid">
                     <% items.forEach(item => { %>
-                        <li><strong>Name:</strong> <%= item.Name %> | <strong>Category:</strong> <%= item.Category %></li>
+                        <div class="item-card">
+                            <img src="<%= item.photoPath %>" alt="<%= item.Name %>" class="item-image"> <!-- assuming you have an image URL for each item -->
+                            <h3><%= item.Name %></h3>
+                            <p><strong>Category:</strong> <%= item.Category %></p>
+                            <!-- You can add more details like price, description, etc. here -->
+                        </div>
                     <% }); %>
-                </ul>
+                </div>
+                
             </div>
         </div>
     </body>
