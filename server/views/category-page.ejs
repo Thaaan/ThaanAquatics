@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>ThaanAquatics | Home</title>
+        <title>ThaanAquatics | <%= currentCategory %></title>
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Patrick Hand" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -50,17 +50,19 @@
             
             <div class="gallery">
                 <div class="breadcrumbs">
-                    <a href="/">Home</a> > <a href="/products/<%= currentCategory %>"><%= currentCategory %></a>
+                    <a href="/">Home</a> > <a id="no-underline"><%= currentCategory %></a>
                     <p><%= currentCategory %></p>
                 </div>
                 <div class="items-grid">
                     <% items.forEach(item => { %>
-                        <div class="item-card">
-                            <img src="<%= item.photoPath %>" alt="<%= item.Name %>" class="item-image"> <!-- assuming you have an image URL for each item -->
-                            <h3><%= item.Name %></h3>
-                            <p><strong>Category:</strong> <%= item.Category %></p>
-                            <!-- You can add more details like price, description, etc. here -->
-                        </div>
+                        <a href="/products/<%= currentCategory %>/<%= item.Name %>">
+                            <div class="item-card">
+                                <img src="<%= item.photoPath %>" alt="<%= item.Name %>" class="item-image"> <!-- assuming you have an image URL for each item -->
+                                <h3><%= item.Name %></h3>
+                                <p><strong>Category:</strong> <%= item.Category %></p>
+                                <p><strong>Price:</strong> <%= item.Price %></p>
+                            </div>
+                        </a>
                     <% }); %>
                 </div>
                 

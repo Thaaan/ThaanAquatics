@@ -299,6 +299,10 @@ body{
     text-decoration: none;
 }
 
+.breadcrumbs #no-underline:hover {
+    text-decoration: none;
+}
+
 .breadcrumbs p {
     margin-top: calc(5px + .5vh);
     font-size: calc(10px + .7vw);
@@ -311,11 +315,18 @@ body{
 .items-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: calc(10px + 1vw);
+    gap: calc(10px + 2.4vw);
     padding: calc(10px + 2vw);
+    white-space: nowrap;
+}
+
+.items-grid a {
+    text-decoration: none;
 }
 
 .item-card {
+    width: calc(50% + 4.5vw);
+    height: calc(60% + 4.5vh);
     background-color: #1A1A1A;
     color: #666;
     border: 2px solid #ddd;
@@ -326,13 +337,17 @@ body{
     cursor: pointer;
 }
 
-.item-image {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.item-card h3, .item-card p {
+    font-size: calc(10px + .3vw);
 }
 
+.item-image {
+    width: calc(60% + 4vw);
+    height: calc(30% + 4vw);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
 
 @media (max-width: 768px) {
     .nav img {
