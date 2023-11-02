@@ -18,7 +18,7 @@ router.get('/products/:category/:name', async (req, res) => {
                     return;
                 }
         
-                const photoPaths = files.map(file => path.join('/assets/img/products', file));
+                const photoPaths = files.map(file => path.join(path.join(item[0].photoPath, '..'), file));
         
                 res.render('item-page', {
                     item: item[0],

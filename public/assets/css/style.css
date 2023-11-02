@@ -227,7 +227,7 @@ body{
     width: 50vw;
     height: 20vh;
     position: absolute;
-    top: calc(20px + 2vh);
+    top: calc(50px + 1vh);
     left: 4vw;
     display: flex;
     flex-direction: column;
