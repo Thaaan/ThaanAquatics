@@ -23,11 +23,17 @@
                       <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
                     </form>
                 </div>
-                <a href="/account">
+                <a href="">
                     <img src="assets/img/account-img.png" alt="Account">
                 </a>
-                <a href="/cart">
-                    <img src="assets/img/cart-img.png" alt="Cart">
+                <a href="javascript:void(0);" class="cart-container" id="cart">
+                    <img src="assets/img/cart-img.png" alt="Cart" id="cart-icon">
+                    <!-- Dropdown container for cart items -->
+                    <div class="cart-dropdown" style="display: none;">
+                        <ul class="cart-items">
+                            <!-- Cart items will be dynamically inserted here -->
+                        </ul>
+                    </div>
                 </a>
             </div>
         </div>
