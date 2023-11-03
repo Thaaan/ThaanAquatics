@@ -46,6 +46,8 @@ body{
 }
 
 
+/* search bar citation: https://codepen.io/k185/pen/PQajXE */
+
 .search-container {
 	position: relative;
 	display: inline-block;
@@ -298,11 +300,11 @@ body{
 .shopall .description {
     background-color: transparent;
     color: #CCCCCC;
-    width: 50vw;
-    height: 20vh;
+    width: calc(100px + 40vw);
+    height: calc(30px + 15vh);
     position: absolute;
-    top: calc(50px + 1vh);
-    left: 4vw;
+    top: 13%;
+    left: 4%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -311,13 +313,13 @@ body{
 
 .shopall .description h2 {
     align-self: flex-start;
-    font-size: calc(16px + 1.2vw);
+    font-size: calc(4px + 1.2vw + 1.2vh);
 }
 
 .shopall .description p {
     margin-top: 15px;
     align-self: center;
-    font-size: calc(12px + 0.4vw);
+    font-size: calc(3px + 0.6vw + .6vh);
 }
 
 .shopall a {
