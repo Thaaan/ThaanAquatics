@@ -66,14 +66,10 @@ router.get('/search', async (req, res) => {
     try {
         const query = req.query.q;
         const items = await itemModel.containsQuery(query);
-        if (items && items.length > 0) {
-            res.render('category-page', {
-                items: items,
-                currentCategory: 'Search:' + query
-            });
-        } else {
-            res.status(404).json({ message: "Category not found" });
-        }
+        res.render('category-page', {
+            items: items,
+            currentCategory: 'Search:' + query
+        });
     } catch (error) {
         res.status(500).send('Error retrieving items.')
     }
