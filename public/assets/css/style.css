@@ -159,10 +159,11 @@ body{
     max-height: 25vh;
     overflow-y: auto;
     overflow-x: hidden;
-    /* box-shadow: 0px 8px 8px 0px rgba(64, 64, 64, 0.2); */
     z-index: 1;
     cursor: auto;
+    border: 1px solid black;
 }
+
 .cart-dropdown::-webkit-scrollbar {
     display: none;
 }
