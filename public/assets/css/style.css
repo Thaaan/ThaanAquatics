@@ -156,9 +156,15 @@ body{
     background-color: #24251e;
     border-radius: calc(5px + .5vw);
     width: calc(50px + 10vw);
+    max-height: 25vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: 0px 8px 16px 0px rgba(94, 94, 94, 0.2);
     z-index: 1;
     cursor: auto;
+}
+.cart-dropdown::-webkit-scrollbar {
+    display: none;
 }
 
 .cart-items li.cart-item-grid {
@@ -278,8 +284,25 @@ body{
     display: block;
 }
 
+/* For Webkit browsers */
 ::-webkit-scrollbar {
-    display: none;
+    width: 4px; /* Width of the vertical scrollbar */
+    height: 8px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners on the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin; /* 'auto' or 'thin' */
+    scrollbar-color: #888 #f1f1f1; /* Thumb and track color */
 }
 
 .gallery {
