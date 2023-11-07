@@ -254,7 +254,7 @@ body{
     transition: background-color 0.3s;
 }
 
-.topbar div:not(.topbar-dropdown-content, .topbar-dropdown) {
+.topbar div:not(.topbar-dropdown-content){
     height: calc(10px + 4vh);
     text-align: center;
     align-items: center;
