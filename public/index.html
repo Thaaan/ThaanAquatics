@@ -11,18 +11,19 @@
     <body>
         <div class="nav">
             <div id="left">
+                <div class="search-container">
+                    <form action="/search" method="get">
+                      <input class="search" id="searchleft" type="search" name="q" placeholder="Search">
+                      <label class="button searchbutton" for="searchleft"><span class="mglass">&#9906;</span></label>
+                    </form>
+                  </div>
+            </div>
+            <div id="center">
                 <a href="/">
                     <img src="assets/img/logo.png" alt="TA" id="logo">
                 </a>
             </div>
-            <div id="center"></div>
             <div id="right">
-                <div class="search-container">
-                    <form action="/search" method="get">
-                      <input class="search expandright" id="searchright" type="search" name="q" placeholder="Search">
-                      <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
-                    </form>
-                </div>
                 <a href="">
                     <img src="assets/img/account-img.png" alt="Account">
                 </a>
@@ -39,19 +40,29 @@
         </div>
 
         <div class="container">
-            <div class="sidebar">
-                    <div class="dropdown">
+            <div class="topbar">
+                    <div class="topbar-dropdown">
                         <a>Catfish</a>
-                        <div class="dropdown-content">
+                        <div class="topbar-dropdown-content">
                             <a href="/products/Corydoras">Corydoras</a>
                             <a href="/products/Plecostomus">Plecostomus</a>
                         </div>
                     </div>
-                    <a href="/products/Livebearers">Guppies</a>
-                    <a href="/products/Livebearers">Mollies</a>
-                    <a href="/products/Bettas">Bettas</a>
-                    <a href="/products/Feeders and Inverts">Feeders</a>
-                    <a href="/products/Plants">Plants</a>
+                    <div>
+                        <a href="/products/Livebearers">Guppies</a>
+                    </div>
+                    <div>
+                        <a href="/products/Livebearers">Mollies</a>
+                    </div>
+                    <div>
+                        <a href="/products/Bettas">Bettas</a>
+                    </div>
+                    <div>
+                        <a href="/products/Feeders and Inverts">Feeders</a>
+                    </div>
+                    <div>
+                        <a href="/products/Plants">Plants</a>
+                    </div>
             </div>
 
             <div class="gallery" id="homepage">
