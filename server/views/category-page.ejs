@@ -61,13 +61,19 @@
                     <p><%= currentCategory %></p>
                 </div>
                 <div class="items-grid">
-                    <% items.forEach(item => { %>
-                        <a href="/products/<%= currentCategory %>/<%= item.Name %>">
+                    <% items.sort((a, b) => (b.Quantity > 0) - (a.Quantity > 0) || a.Name.localeCompare(b.Name)).forEach(item => { %>
+                        <a href="/products/<%= currentCategory %>/<%= item.Name %>" class="<%= item.Quantity === 0 ? 'sold-out' : '' %>">
                             <div class="item-card">
-                                <img src="<%= item.photoPath %>" alt="<%= item.Name %>" class="item-image"> <!-- assuming you have an image URL for each item -->
+                                <img src="<%= item.photoPath %>" alt="<%= item.Name %>" class="item-image">
                                 <h3><%= item.Name %></h3>
                                 <p><strong>Category:</strong> <%= item.Category %></p>
-                                <p><strong>Price:</strong> <%= item.Price %></p>
+                                <p><strong>Price:</strong> 
+                                    <% if (item.Quantity && item.Quantity > 0) { %>
+                                        <%= item.Price %>
+                                    <% } else { %>
+                                        Sold Out
+                                    <% } %>
+                                </p>
                             </div>
                         </a>
                     <% }); %>

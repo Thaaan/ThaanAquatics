@@ -576,8 +576,17 @@ body{
     transition: background-color 0.3s;
 }
 
+.item-details #sold-out {
+    background-color: #C97C8B;
+    cursor: auto;
+}
+
 .item-details button:hover {
     background-color: #D01757;
+}
+
+.item-details #sold-out:hover {
+    background-color: #C97C8B;
 }
 
 @media (max-width: 768px) {

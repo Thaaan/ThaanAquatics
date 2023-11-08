@@ -1,3 +1,5 @@
+const stripe = Stripe('pk_test_51I7TsgEDDKDRYe98uISk16Yy5UuF3trOxJ07Gp0BwwBOqVAp6Hm4jrSeGTlhZOIZs3wWEDNrz5OtM3C4pZyT1S8J00BaGysTqx');
+
 document.addEventListener("DOMContentLoaded", function() {
     let resizeTimeout;
     let searchInput = document.querySelector('.search');
@@ -50,6 +52,30 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener('mousedown', function(event) {
         if (!cartDropdown.contains(event.target) && !cartIcon.contains(event.target)) {
             cartDropdown.style.display = 'none';
+        }
+    });
+
+    cartDropdown.addEventListener('click', (event) => {
+        if (event.target.id === 'checkout-button') {
+            const cartItems = getCartFromCookie();
+            console.log(JSON.stringify({ items: cartItems }))
+
+            fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ items: cartItems }),
+            })
+            .then(response => response.json())
+            .then(session => {
+                console.log(session);
+                // Use Stripe.js to redirect to the checkout page
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     });
 });
@@ -140,7 +166,7 @@ function updateCartDropdown() {
     checkoutSection.className = 'checkout-section';
     checkoutSection.innerHTML = `
         <div class="subtotal">Subtotal: $${subtotal.toFixed(2)}</div>
-        <button class="checkout-button">Checkout</button>
+        <button class="checkout-button" id="checkout-button">Checkout</button>
     `;
     cartItemsContainer.appendChild(checkoutSection);
 

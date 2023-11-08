@@ -3,9 +3,11 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 const itemRoutes = require('./server/db/item.routes.js');
+const checkoutRoutes = require('./server/db/checkout.routes.js');
 
 app.use(express.json());  // To parse JSON bodies
 app.use('/', itemRoutes);
+app.use('/', checkoutRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/server/views'));
