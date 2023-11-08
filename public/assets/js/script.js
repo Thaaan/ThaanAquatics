@@ -19,12 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
-        // When the resize starts, add the no-transition class to disable transitions
         searchInput.classList.add('no-transition');
         searchButton.classList.add('no-transition');
 
         resizeTimeout = setTimeout(function() {
-            // After a short delay (100ms), remove the class to re-enable transitions
             searchInput.classList.remove('no-transition');
             searchButton.classList.remove('no-transition');
         }, 100);
@@ -58,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
     cartDropdown.addEventListener('click', (event) => {
         if (event.target.id === 'checkout-button') {
             const cartItems = getCartFromCookie();
-            console.log(JSON.stringify({ items: cartItems }))
 
             fetch('/create-checkout-session', {
                 method: 'POST',
@@ -69,8 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(response => response.json())
             .then(session => {
-                console.log(session);
-                // Use Stripe.js to redirect to the checkout page
                 return stripe.redirectToCheckout({ sessionId: session.id });
             })
             .catch(error => {
@@ -81,15 +76,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function setCartCookie(cart) {
-    // Serialize the cart object to a JSON string
     const cartValue = JSON.stringify(cart);
-    // Set the cookie to expire in 1 day/s
     const date = new Date();
     date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
-    // Set the cookie with the cart data
     document.cookie = "cart=" + cartValue + ";" + expires + ";path=/";
-    console.log('Cookie set: ', document.cookie);
 }
 
 function addToCart(productName, productPrice, quantity) {
@@ -110,7 +101,6 @@ function addToCart(productName, productPrice, quantity) {
 }
 
 function getCartFromCookie() {
-    // Retrieve the cookie value
     const name = "cart=";
     const decodedCookie = decodeURIComponent(document.cookie);
     const ca = decodedCookie.split(';');
@@ -119,7 +109,6 @@ function getCartFromCookie() {
         let c = ca[i].trim(); // Use trim() to remove whitespace from both ends of the string
         if (c.indexOf(name) === 0) {
             try {
-                // Parse the JSON string back to an object
                 return JSON.parse(c.substring(name.length));
             } catch (e) {
                 console.error('Error parsing cart cookie:', e);
@@ -133,23 +122,20 @@ function getCartFromCookie() {
 
 function removeItemFromCart(index) {
     let cart = getCartFromCookie();
-    // Remove the item at the specified index
     cart.splice(index, 1);
-    // Update the cart cookie
     setCartCookie(cart);
-    // Update the cart dropdown to reflect the changes
     updateCartDropdown();
 }
 
 function updateCartDropdown() {
     const cart = getCartFromCookie();
     const cartItemsContainer = document.querySelector('.cart-items');
-    cartItemsContainer.innerHTML = ''; // Clear current cart items
+    cartItemsContainer.innerHTML = '';
 
     let subtotal = 0;
     cart.forEach((item, index) => {
         const listItem = document.createElement('li');
-        listItem.className = 'cart-item-grid'; // Add a class for styling
+        listItem.className = 'cart-item-grid';
         listItem.innerHTML = `
             <span class="cart-item-name">${item.productName}</span>
             <span class="cart-item-quantity">Qty: ${item.quantity}</span>
@@ -157,11 +143,9 @@ function updateCartDropdown() {
         `;
         cartItemsContainer.appendChild(listItem);
 
-        // Calculate subtotal
         subtotal += item.productPrice * item.quantity;
     });
 
-    // Add subtotal and checkout button
     const checkoutSection = document.createElement('div');
     checkoutSection.className = 'checkout-section';
     checkoutSection.innerHTML = `
@@ -173,10 +157,9 @@ function updateCartDropdown() {
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<li>Your cart is empty.</li>';
     } else {
-        // Add event listeners to the delete buttons after the list is populated
         document.querySelectorAll('.delete-item').forEach(button => {
             button.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevent the dropdown from closing
+                event.stopPropagation();
                 removeItemFromCart(this.getAttribute('data-index'));
             });
         });

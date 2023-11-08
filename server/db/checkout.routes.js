@@ -23,7 +23,7 @@ router.post('/create-checkout-session', async (req, res) => {
             line_items: lineItems,
             mode: 'payment',
             success_url: 'https://thaan-aquatics-2567e96c9457.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'https://thaan-aquatics-2567e96c9457.herokuapp.com/cancel',
+            cancel_url: 'https://thaan-aquatics-2567e96c9457.herokuapp.com/cancel'
         });
 
         res.json({ id: session.id });
