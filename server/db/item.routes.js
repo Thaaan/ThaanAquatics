@@ -49,14 +49,10 @@ router.get('/products/:category', async (req, res) => {
     try {
         const itemCategory = req.params.category;
         const items = await itemModel.getItemByCategory(itemCategory);
-        if (items && items.length > 0) {
-            res.render('category-page', {
-                items: items,
-                currentCategory: itemCategory
-            });
-        } else {
-            res.status(404).json({ message: "Category not found" });
-        }
+        res.render('category-page', {
+            items: items,
+            currentCategory: itemCategory
+        });
     } catch (error) {
         res.status(500).send('Error retrieving items.');
     }
