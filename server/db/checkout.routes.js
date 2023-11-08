@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const orderModel = require('./order.model');
-const stripe = require('stripe')('sk_test_51I7TsgEDDKDRYe98Dp0NNhQUfzPp2M8i9TGbXY8HcXsX5fIo5JDnxzbZhPgBJ9IaRzblf0Nsz0MS4HkttoEKe1rM00YEQRsayn');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY_TEST);
 
 router.post('/create-checkout-session', async (req, res) => {
     const cartItems = req.body.items;
