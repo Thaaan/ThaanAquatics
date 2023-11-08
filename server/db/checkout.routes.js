@@ -21,9 +21,16 @@ router.post('/create-checkout-session', async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: lineItems,
+            shipping_address_collection: {
+                allowed_countries: ['US', 'CA'],
+            },
+            shipping_options: [
+                { shipping_rate: 'shr_1OAKH8EDDKDRYe98VMVr6rc1' },
+                { shipping_rate: 'shr_1OAKSAEDDKDRYe98WMPpB7Hf' }
+            ],
             mode: 'payment',
-            success_url: 'https://thaan-aquatics-2567e96c9457.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'https://thaan-aquatics-2567e96c9457.herokuapp.com/cancel'
+            success_url: 'https://thaanaquatics.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'https://thaanaquatics.com/cancel'
         });
 
         res.json({ id: session.id });
