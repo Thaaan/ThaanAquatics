@@ -25,8 +25,8 @@ router.post('/create-checkout-session', async (req, res) => {
                 allowed_countries: ['US', 'CA'],
             },
             shipping_options: [
-                { shipping_rate: 'shr_1OAKH8EDDKDRYe98VMVr6rc1' },
                 { shipping_rate: 'shr_1OAKSAEDDKDRYe98WMPpB7Hf' },
+                { shipping_rate: 'shr_1OAKH8EDDKDRYe98VMVr6rc1' },
                 { shipping_rate: 'shr_1OASA6EDDKDRYe986a1Bfdmd'}
             ],
             mode: 'payment',
