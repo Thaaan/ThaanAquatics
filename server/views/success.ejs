@@ -4,10 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Payment Success</title>
+        <link rel="icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/assets/css/success.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     </head>
     <body>
-        <h1>Payment Successful!</h1>
-        <p>Thank you for your purchase. Your transaction has been completed, and a receipt for your purchase has been emailed to you.</p>
-        <a href="/">Go to Home Page</a>
+        <div class="success-container">
+            <div class="checkmark-circle">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" stroke="#4bb543" stroke-width="2"/>
+                    <path class="checkmark__check" fill="none" stroke="#4bb543" stroke-width="2" d="M16,27 L22,33 L36,19" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                
+            </div>
+            <h1>Payment Success!</h1>
+            <h2>Order: <%= id %></h2>
+            <hr>
+            <p>Thank you for your purchase. Your transaction has been completed, and a receipt for your purchase has been emailed to you.</p>
+            <a class="continue-btn" href="/">Continue Shopping</a>
+        </div>
+        <script src="/assets/js/success.js"></script>
     </body>
 </html>

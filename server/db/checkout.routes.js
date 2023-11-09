@@ -26,11 +26,12 @@ router.post('/create-checkout-session', async (req, res) => {
             },
             shipping_options: [
                 { shipping_rate: 'shr_1OAKH8EDDKDRYe98VMVr6rc1' },
-                { shipping_rate: 'shr_1OAKSAEDDKDRYe98WMPpB7Hf' }
+                { shipping_rate: 'shr_1OAKSAEDDKDRYe98WMPpB7Hf' },
+                { shipping_rate: 'shr_1OASA6EDDKDRYe986a1Bfdmd'}
             ],
             mode: 'payment',
-            success_url: 'https://thaanaquatics.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'https://thaanaquatics.com/cancel'
+            success_url: 'https://www.thaanaquatics.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'https://www.thaanaquatics.com/'
         });
 
         res.json({ id: session.id });
@@ -53,10 +54,18 @@ router.get('/success', async (req, res) => {
         }));
 
         const result = await orderModel.addOrder(session, lineItems);
-
-        //take out the quantity from the items database
         
-        res.render('success');
+        for (const item of lineItems) {
+            try {
+                const result = await orderModel.soldQuantity(item.name, item.quantity);
+            } catch (error) {
+                console.error(`Error updating quantity for ${item.name}:`, error);
+            }
+        }
+
+        res.render('success', {
+            id: session_id
+        });
       } catch (error) {
         console.log(error);
       }
@@ -65,8 +74,14 @@ router.get('/success', async (req, res) => {
     }
 });
 
-router.get('/cancel', (req, res) => {
-    res.render('cancel');
-});  
+router.post('/api/check-quantity', async (req, res) => {
+    const { productName } = req.body;
+    try {
+        const availableQuantity = await orderModel.getQuantity(productName);
+        res.json({ availableQuantity: availableQuantity[0].Quantity });
+    } catch (error) {
+        res.status(500).send('Error checking product quantity');
+    }
+});
 
 module.exports = router;

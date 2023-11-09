@@ -30,7 +30,33 @@ function addOrder(session, items) {
     });
 }
 
+function soldQuantity(item, quantity) {
+    return new Promise((resolve, reject) => {
+        pool.query('UPDATE Products SET Quantity = GREATEST(0, Quantity - ?) WHERE Name = ?', [quantity, item], function(err, results) {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
+function getQuantity(item) {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT Quantity FROM `Products` WHERE Name = ?', [item], function(err, results) {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
 
 module.exports = {
-    addOrder
+    addOrder,
+    soldQuantity,
+    getQuantity
 };

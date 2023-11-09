@@ -71,33 +71,5 @@ router.get('/search', async (req, res) => {
     }
 })
 
-router.get('/api/name/:name', async (req, res) => {
-    try {
-        const itemName = req.params.name;
-        const item = await itemModel.getItemByName(itemName);
-        if (item && item.length > 0) {
-            res.json(item[0]);
-        } else {
-            res.status(404).json({ message: "Item not found" });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
-router.get('/api/category/:category', async (req, res) => {
-    try {
-        const itemCategory = req.params.category;
-        const items = await itemModel.getItemByCategory(itemCategory);
-        if (items && items.length > 0) { 
-            res.json(items);
-        } else {
-            res.status(404).json({ message: "Item not found" });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
 
 module.exports = router;

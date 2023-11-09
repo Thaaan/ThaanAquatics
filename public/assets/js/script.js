@@ -34,7 +34,22 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener('click', function() {
             const productName = this.getAttribute('data-product-name');
             const productPrice = this.getAttribute('data-product-price');
-            addToCart(productName, productPrice, 1);
+
+            const itemContainer = this.closest('.item-details');
+            const quantityInput = itemContainer.querySelector('#quantity');
+            const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
+
+            addToCart(productName, productPrice, quantity);
+
+            this.textContent = 'Added';
+            this.style.backgroundColor = '#C97C8B';
+            this.disabled = true;
+
+            setTimeout(() => {
+                this.textContent = 'Add to Cart';
+                this.style.backgroundColor = '#E91E63';
+                this.disabled = false;
+            }, 2000);
         });
     });
 
@@ -66,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(response => response.json())
             .then(session => {
+                localStorage.setItem('checkoutSessionId', session.id);
                 return stripe.redirectToCheckout({ sessionId: session.id });
             })
             .catch(error => {
@@ -78,22 +94,32 @@ document.addEventListener("DOMContentLoaded", function() {
 function setCartCookie(cart) {
     const cartValue = JSON.stringify(cart);
     const date = new Date();
-    date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
     document.cookie = "cart=" + cartValue + ";" + expires + ";path=/";
 }
 
-function addToCart(productName, productPrice, quantity) {
+async function addToCart(productName, productPrice, quantity) {
+    const response = await fetch('/api/check-quantity', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productName: productName }),
+    });
+
+    const { availableQuantity } = await response.json();
+
     let cart = getCartFromCookie();
     let cartItem = cart.find(item => item.productName === productName);
 
     if (cartItem) {
-        cartItem.quantity += quantity;
+        cartItem.quantity = Math.min(cartItem.quantity + quantity, availableQuantity);
     } else {
         cart.push({
             productName: productName,
             productPrice: productPrice,
-            quantity: quantity
+            quantity: Math.min(quantity, availableQuantity)
         });
     }
 

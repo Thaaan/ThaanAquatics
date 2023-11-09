@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Patrick Hand" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
         <script src="https://js.stripe.com/v3/"></script>
         <script src="/assets/js/script.js" defer></script>
         <meta charset="utf-8">
@@ -72,8 +72,10 @@
                     <!-- Item details -->
                     <div class="item-details">
                         <h1><%= item.Name %></h1>
-                        <p><%= item.Description %></p>
+                        <p id="description"><%= item.Description %></p>
+                        <p><%= item.Quantity %> Left</p>
                         <h2>Price: $<%= item.Price %></h2>
+                        <input type="number" id="quantity" name="quantity" min="1" max="<%= item.Quantity %>" value="1">
                         <% if (item.Quantity && item.Quantity > 0) { %>
                             <button class="add-to-cart-btn" data-product-name="<%= item.Name %>" data-product-price="<%= item.Price %>">Add to Cart</button>
                         <% } else { %>
