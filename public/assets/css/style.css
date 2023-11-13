@@ -165,6 +165,7 @@ body{
     z-index: 1;
     cursor: auto;
     border: 1px solid black;
+    scrollbar-width: none;
 }
 
 .cart-dropdown::-webkit-scrollbar {
@@ -361,7 +362,7 @@ body{
 /* For Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
+    scrollbar-color: #888 #eee;
 }
 
 /* category gallery thing on the home page */
@@ -553,6 +554,7 @@ body{
     top: 20px;
     max-height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .item-details h1 {
