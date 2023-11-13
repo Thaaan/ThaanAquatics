@@ -255,7 +255,7 @@ body{
     color: #CCCCCC;
     box-sizing: border-box;
     border-radius: 5px;
-    font-size: calc(3px + 0.3vw + 0.6vh);
+    font-size: calc(5px + 0.3vw + 0.6vh);
     transition: background-color 0.3s;
 }
 
