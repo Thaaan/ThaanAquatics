@@ -12,7 +12,7 @@ router.post('/create-checkout-session', async (req, res) => {
             product_data: {
                 name: item.productName
             },
-            unit_amount: item.productPrice * 100, // Stripe expects the amount in cents
+            unit_amount: Math.round(item.productPrice * 100), // Stripe expects the amount in cents
         },
         quantity: item.quantity
     }));
